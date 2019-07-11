@@ -39,4 +39,4 @@ steps:
     imageSource: 'imagename'
     sourceImageName: 'myredis'
     repositoryName: 'repo-donn-ecr'
-    pushTag: '$(imgTagName)'
+    pushTag: $(imgTagName)
