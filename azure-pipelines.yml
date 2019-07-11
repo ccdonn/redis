@@ -18,4 +18,8 @@ steps:
     echo See https://aka.ms/yaml
   displayName: 'Run a multi-line script'
 
-- script: docker build -t myredis Dockerfile
+- script: |
+    echo start
+    pwd
+    ls
+    echo end
