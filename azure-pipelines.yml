@@ -39,4 +39,11 @@ steps:
     sourceImageName: 'myredis'
     repositoryName: 'repo-donn-ecr'
 
-    
+- task: ECRPushImage@1
+  inputs:
+    awsCredentials: 'DonnAWS'
+    regionName: 'us-east-1'
+    imageSource: 'imagename'
+    sourceImageName: 'myredis'
+    repositoryName: 'repo-donn-ecr'
+    pushTag: '$(imgTagName)'
