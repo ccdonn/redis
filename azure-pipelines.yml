@@ -26,3 +26,11 @@ steps:
 - script: sudo apt-get install -y gcc make g++ build-essential libc6-dev tcl wget
 
 - script: docker build -t myredis ./5.0
+
+- task: ECRPushImage@1
+  inputs:
+    awsCredentials: 'DonnAWS'
+    regionName: 'us-east-1'
+    imageSource: 'imagename'
+    sourceImageName: 'myredis'
+    repositoryName: 'repo-donn-ecr'
