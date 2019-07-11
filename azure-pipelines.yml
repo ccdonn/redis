@@ -23,3 +23,5 @@ steps:
     pwd
     ls
     echo end
+    
+- script: docker build -t myredis /me
