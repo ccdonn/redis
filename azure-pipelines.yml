@@ -24,4 +24,4 @@ steps:
     ls
     echo end
     
-- script: docker build -t myredis /me
+- script: docker build -t myredis ./me
