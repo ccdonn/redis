@@ -32,23 +32,6 @@ steps:
     sourceImageName: 'myredis'
     repositoryName: 'repo-donn-ecr'
 
-- task: ECRPushImage@1
-  inputs:
-    awsCredentials: 'DonnAWS'
-    regionName: 'us-east-1'
-    imageSource: 'imagename'
-    sourceImageName: 'myredis'
-    repositoryName: 'repo-donn-ecr'
-    pushTag: $BUILD_SOURCEBRANCHNAME
-
-- task: ECRPushImage@1
-  inputs:
-    awsCredentials: 'DonnAWS'
-    regionName: 'us-east-1'
-    imageSource: 'imagename'
-    sourceImageName: 'myredis'
-    repositoryName: 'repo-donn-ecr'
-    pushTag: ${env:BUILD_SOURCEBRANCHNAME}
 
 - task: ECRPushImage@1
   inputs:
@@ -58,3 +41,12 @@ steps:
     sourceImageName: 'myredis'
     repositoryName: 'repo-donn-ecr'
     pushTag: $(Build.SourceBranchName)
+
+- task: ECRPushImage@1
+  inputs:
+    awsCredentials: 'DonnAWS'
+    regionName: 'us-east-1'
+    imageSource: 'imagename'
+    sourceImageName: 'myredis'
+    repositoryName: 'repo-donn-ecr'
+    pushTag: ${env:BUILD_SOURCEBRANCHNAME}
