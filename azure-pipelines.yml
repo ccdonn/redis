@@ -18,6 +18,9 @@ jobs:
   steps:
     - script: echo $(Build.SourceBranchName)
       condition: and(succeeded(), startsWith(variables['Build.SourceBranch'], 'refs/heads/feature/release'))
+    - script: export MY_TAGS=$(Build.SourceBranchName)
+      condition: and(succeeded(), startsWith(variables['Build.SourceBranch'], 'refs/heads/feature/release'))
+    - script: echo $MY_TAGS
   
 # steps:
 # - script: echo Hello, world!
