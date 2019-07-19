@@ -31,7 +31,12 @@ jobs:
         export V2=`echo $MY_TAGS | awk '{split($0,a,"-"); print a[3]}'`
         echo $V2
       condition: and(succeeded(), startsWith(variables['Build.SourceBranch'], 'refs/heads/feature/release'))
-  
+- job: buildimage
+  condition: succeeded()
+
+  steps:
+    - script: echo 'job2'
+
 # steps:
 # - script: echo Hello, world!
 #   displayName: 'Run a one-line script'
