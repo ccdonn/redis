@@ -18,7 +18,7 @@ jobs:
   steps:
     - script: echo $(Build.SourceBranchName)
       condition: and(succeeded(), startsWith(variables['Build.SourceBranch'], 'refs/heads/feature/release'))
-
+# get tag name
     - script: |
         echo $PATH
         export MY_TAGS=$(Build.SourceBranchName)
@@ -30,13 +30,13 @@ jobs:
         echo $V1
         export V2=`echo $MY_TAGS | awk '{split($0,a,"-"); print a[3]}'`
         echo $V2
+        echohi
       condition: and(succeeded(), startsWith(variables['Build.SourceBranch'], 'refs/heads/feature/release'))
-- job: buildimage
-  condition: succeeded()
-
-  steps:
-    - script: echo 'job2'
-
+# build docker image
+    - script: echo "build image:$V2"
+      condition: and(succeeded(), startsWith(variables['Build.SourceBranch'], 'refs/heads/feature/release'))
+# ending
+    - script: echo "end of job"
 # steps:
 # - script: echo Hello, world!
 #   displayName: 'Run a one-line script'
