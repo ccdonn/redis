@@ -7,15 +7,17 @@ trigger:
 - master
 - feature/*
 
-pool:
-  vmImage: 'ubuntu-latest'
+# pool:
+# vmImage: 'ubuntu-latest'
 
 variables:
     imgTagName: $BUILD_SOURCEBRANCHNAME
-   
-steps:
-  - script: echo $(Build.SourceBranchName)
-  - script: echo $(Build.SourceBranch)
+
+jobs:
+- job: judge   
+  steps:
+    - script: echo $(Build.SourceBranchName)
+      condition: and(succeeded(), startsWith(variables['Build.SourceBranch'], 'refs/heads/feature/release'))
   
 # steps:
 # - script: echo Hello, world!
