@@ -22,18 +22,14 @@ jobs:
         export MY_TAGS=$(Build.SourceBranchName)
         export V2=`echo $MY_TAGS | awk '{split($0,a,"-"); print a[3]}'`
         echo $V2
-        echo "##vso[task.setvariable variable=sauce1]$V2"
+        echo "##vso[task.setvariable variable=releasetag]$V2"
       condition: and(succeeded(), startsWith(variables['Build.SourceBranch'], 'refs/heads/feature/release'))
 # show?    
-    - script: |
-        echo $V2
-        echo $(sauce)
-        echo $(sauce1)
-        echo $(sauce2)
+    - script: echo $(releasetag)
       condition: and(succeeded(), startsWith(variables['Build.SourceBranch'], 'refs/heads/feature/release'))
 
 # build docker image
-    - script: echo "build image:$V2"
+    - script: echo "build image:$(releasetag)"
       condition: and(succeeded(), startsWith(variables['Build.SourceBranch'], 'refs/heads/feature/release'))
 # ending
     - script: echo "end of job"
