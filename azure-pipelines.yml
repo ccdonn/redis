@@ -23,6 +23,13 @@ jobs:
         echo $PATH
         export MY_TAGS=$(Build.SourceBranchName)
         echo $MY_TAGS
+        echo $MY_TAGS | awk '{split($0,a,"-"); print a[3]}'
+        export VAR=23456
+        echo $VAR
+        export V1=`echo $MY_TAGS`
+        echo $V1
+        export V2=`echo $MY_TAGS | awk '{split($0,a,"-"); print a[3]}'`
+        echo $V2
       condition: and(succeeded(), startsWith(variables['Build.SourceBranch'], 'refs/heads/feature/release'))
   
 # steps:
