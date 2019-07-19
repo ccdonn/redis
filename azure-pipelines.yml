@@ -31,6 +31,10 @@ jobs:
         export V2=`echo $MY_TAGS | awk '{split($0,a,"-"); print a[3]}'`
         echo $V2
       condition: and(succeeded(), startsWith(variables['Build.SourceBranch'], 'refs/heads/feature/release'))
+# show?    
+    - script: echo $V2
+      condition: and(succeeded(), startsWith(variables['Build.SourceBranch'], 'refs/heads/feature/release'))
+
 # build docker image
     - script: echo "build image:$V2"
       condition: and(succeeded(), startsWith(variables['Build.SourceBranch'], 'refs/heads/feature/release'))
