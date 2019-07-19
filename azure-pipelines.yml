@@ -18,6 +18,12 @@ jobs:
   steps:
     - script: echo $(Build.SourceBranchName)
       condition: and(succeeded(), startsWith(variables['Build.SourceBranch'], 'refs/heads/feature/release'))
+    
+    - script: |
+        echo '##vso[task.setvariable variable=sauce]crushed tomatoes'
+    - script: |
+        echo my pipeline variable is $(sauce)
+
 # get tag name
     - script: |
         echo $PATH
